@@ -154,9 +154,9 @@ button[type="submit"]:hover {
     width: 100%;
     max-width: 600px; /* ajusta el valor máximo según tus necesidades */
     margin: 0 auto;
-  }
-  
-  .image {
+}
+
+.image {
     flex: 1;
 }
 
