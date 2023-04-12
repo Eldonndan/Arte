@@ -49,7 +49,65 @@
     </div>
     </nav>
 
-    </header>
+    <div class="popup" id="popup">
+        <div class="icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <p>Se ha iniciado la sesión correctamente</p>
+    </div>
+    
+    <script>
+        window.onload = function() {
+            var popup = document.getElementById("popup");
+            popup.classList.add("show");
+            setTimeout(function() {
+                popup.classList.remove("show");
+            }, 2000);
+        };
+    </script>
+
+    <div class="separacion">
+    </div>
+
+    <div class="tabla-container">
+        <table>
+        <thead>
+            <tr>
+            <th>Seleccionar</th>
+            <th>Nombre de la persona</th>
+            <th>Obra de arte</th>
+            <th>Foto de la obra</th>
+            <th>Curriculum</th>
+            <th>Descripción de la obra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" name="item1" /></td>
+                <td>Sofia Alfaro</td>
+                <td>Michi Egipto</td>
+                <td><img src="img/egipto.jpg" alt="Egipto" width="100" /></td>
+                <td>Curriculum_SofiaA.pdf</td>
+              <td>En este ejemplar del Libro de los muertos se representa a la diosa Opet en forma de hipopótamo ante un altar de ofrendas. Tras ella, la diosa Hathor, en forma de vaca y luciendo un collar menat.</td>
+            </tr>
+
+            <tr>
+            <td><input type="checkbox" /></td>
+            <td>Damian Nuñez</td>
+            <td>Narciso</td>
+            <td><img src="img/narciso.jpg" alt="Lobo aullando" width="100" /></td>
+            <td>Curriculum_DamianN.pdf</td>
+            <td>Muestra un fenómeno curioso relacionado con el reflejo. Además de la historia mitológica del personaje, es destacable pictóricamente, el cual está reflejándose en el agua de la fuente que sería su tumba y renacer.</td>
+            </tr>
+
+            <!-- Aquí van las demás filas -->
+        </tbody>
+        </table>
+        <div class="botones-container">
+            <button class="aprobar">Aprobar</button>
+            <button class="rechazar">Rechazar</button>
+        </div>
+    </div>
 
 <!-- FOOTER -->
 <div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
