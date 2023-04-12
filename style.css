@@ -22,7 +22,7 @@ header {
 
 .logo {
     flex: 1;
-    text-align: center;
+    text-align: center; 
 }
 
 .logo img {
@@ -31,29 +31,6 @@ header {
     height: auto;
 }
 
-.search {
-    flex: 1;
-    text-align: center;
-}
-
-.search form {
-    display: inline-block;
-}
-
-.search input[type="text"] {
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: none;
-    margin-right: 8px;
-}
-
-.search button[type="submit"] {
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: none;
-    background-color: #fff;
-    color: #333;
-}
 
 body {
     background-color: #7e7e7e;
@@ -181,3 +158,48 @@ button[type="submit"]:hover {
     padding: 0;
     box-sizing: border-box;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+body {
+    background: linear-gradient(0deg, #fff, 50%, #DEEEFE);
+    font-family: 'Rubik', sans-serif;
+    background: #455A64;
+    height: 100 !important;
+}
+
+
+.container-fluid{
+    overflow:hidden; 
+    margin-top: 250px ;
+    background:#262626 ;
+    color: #627482  !important;
+    margin-bottom: 0 ;
+    padding-bottom:0  ;
+}
+
+small{
+    font-size: calc(12px + (15 - 12) * ((100vw - 360px) / (1600 - 360))) !important; 
+}
+
+.bold-text{
+    color: #989c9e !important;
+}
+
+
+.mt-55{
+    margin-top: calc(50px + (60 - 50) * ((100vw - 360px) / (1600 - 360))) !important; 
+}
+
+
+h3{
+    font-size: calc(34px + (40 - 34) * ((100vw - 360px) / (1600 - 360))) !important; 
+}
+
+.social{
+    font-size: 21px !important; 
+}
+
+.rights{
+    font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important; 
+}
+
