@@ -413,6 +413,7 @@ table {
     .popup {
         width: 90%;
     }
+}
 .image-container {
     text-align: center;
 }
@@ -474,6 +475,7 @@ table {
     flex-wrap: wrap;
     justify-content: center;
     }
+
 }
 .galeria {
     display: flex;
