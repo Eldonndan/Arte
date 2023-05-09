@@ -110,6 +110,34 @@
                 <option value="PAS">Pastel</option>
                 <option value="TNC">Tinta china</option>
             </select>
+
+            <div class="separacion"></div>
+
+            <label>Categoría:</label>
+            <div class="checkbox-container">
+              <input type="checkbox" name="categoria[]" value="contemporaneo">
+              <label>Contemporáneo</label>
+              <br>
+              <input type="checkbox" name="categoria[]" value="precolombino">
+              <label>Precolombino</label>
+              <br>
+              <input type="checkbox" name="categoria[]" value="otro">
+              <label>Otro</label>
+            </div>
+
+            <div class="separacion"></div>
+
+            <label>¿Quieres que la obra sea destacada?</label>
+            <div class="radio-container">
+              <input type="radio" name="destacada" value="si">
+              <label>Sí</label>
+              <br>
+              <input type="radio" name="destacada" value="no">
+              <label>No</label>
+            </div>
+
+
+
         
             <label  for="Fecha_obra">Fecha de la obra</label>
             <input id="birthdate" class="form-control" type="date" placeholder="YYYY-MM-DD" name="birthdate">

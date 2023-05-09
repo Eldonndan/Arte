@@ -496,3 +496,23 @@ table {
     transform: scale(1.05);
     cursor: pointer;
 }
+
+.checkbox-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-container label {
+    margin-left: 5px;
+  }
+  
+  .radio-container {
+    margin-bottom: 20px;
+  }
+  
+  .radio-container label {
+    margin-left: 5px;
+  }
+  
