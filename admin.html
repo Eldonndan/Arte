@@ -11,7 +11,7 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     
-    <title>Ayuda - Gound Zero</title>
+    <title>Administrador - Gound Zero</title>
     <link rel="icon" href="img/lienzo.png">
     <link rel="stylesheet" type="text/css" href="style.css">
     </head>
@@ -70,7 +70,7 @@
     </div>
 
     <div class="tabla-container">
-        <table>
+        <table id="tabla-datos">
         <thead>
             <tr>
             <th>Seleccionar</th>
@@ -83,21 +83,11 @@
         </thead>
         <tbody>
             <tr>
-                <td><input type="checkbox" name="item1" /></td>
-                <td>Sofia Alfaro</td>
-                <td>Michi Egipto</td>
-                <td><img src="img/egipto.jpg" alt="Egipto" width="100" /></td>
-                <td>Curriculum_SofiaA.pdf</td>
-              <td>En este ejemplar del Libro de los muertos se representa a la diosa Opet en forma de hipopótamo ante un altar de ofrendas. Tras ella, la diosa Hathor, en forma de vaca y luciendo un collar menat.</td>
+            
             </tr>
 
             <tr>
-            <td><input type="checkbox" /></td>
-            <td>Damian Nuñez</td>
-            <td>Narciso</td>
-            <td><img src="img/narciso.jpg" alt="Lobo aullando" width="100" /></td>
-            <td>Curriculum_DamianN.pdf</td>
-            <td>Muestra un fenómeno curioso relacionado con el reflejo. Además de la historia mitológica del personaje, es destacable pictóricamente, el cual está reflejándose en el agua de la fuente que sería su tumba y renacer.</td>
+            
             </tr>
 
             <!-- Aquí van las demás filas -->
@@ -108,6 +98,8 @@
             <button class="rechazar">Rechazar</button>
         </div>
     </div>
+
+    <script src="api.js"></script>
 
 <!-- FOOTER -->
 <div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
