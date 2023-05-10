@@ -1246,42 +1246,66 @@
     }
   };
 
-  validate.exposeModule(validate, this, exports, module, define);
-}).call(this,
-        typeof exports !== 'undefined' ? /* istanbul ignore next */ exports : null,
-        typeof module !== 'undefined' ? /* istanbul ignore next */ module : null,
-        typeof define !== 'undefined' ? /* istanbul ignore next */ define : null);
+// Validar el primer formulario de inicio de sesión
+const form1 = document.getElementById("login-form");
+form1.addEventListener("submit", function(event) {
+  // Evitar que la página se recargue
+  event.preventDefault();
 
-
-        const loginForm = document.querySelector('#login-form');
-loginForm.addEventListener('submit', (event) => {
-  event.preventDefault(); // Evita que el formulario se envíe automáticamente
-  
-  const emailInput = document.querySelector('#email');
-  const passwordInput = document.querySelector('#password');
-  const email = emailInput.value.trim();
-  const password = passwordInput.value.trim();
-  
-  // Validación del campo de correo electrónico
-  if (!email) {
-    alert('Por favor ingresa un correo electrónico');
-    emailInput.focus();
-    return;
+  // Validar el correo electrónico y la contraseña
+  const email = form1.email.value;
+  const password = form1.password.value;
+  if (email.trim() === "") {
+    showError("Por favor, ingresa tu correo electrónico.", form1);
+  } else if (!isValidEmail(email)) {
+    showError("Por favor, ingresa un correo electrónico válido.", form1);
+  } else if (password.trim() === "") {
+    showError("Por favor, ingresa tu contraseña.", form1);
+  } else {
+    // Todos los campos son válidos, enviar el formulario
+    form1.submit();
   }
-  if (!/\S+@\S+\.\S+/.test(email)) {
-    alert('Por favor ingresa un correo electrónico válido');
-    emailInput.focus();
-    return;
-  }
-  
-  // Validación del campo de contraseña
-  if (!password) {
-    alert('Por favor ingresa una contraseña');
-    passwordInput.focus();
-    return;
-  }
-  
-  // Si llegamos hasta aquí, significa que los campos son válidos
-  // Puedes hacer aquí lo que necesites, como enviar los datos a un servidor o redireccionar a otra página
-  window.location.href = 'agregarO.html';
 });
+
+// Validar el segundo formulario de inicio de sesión
+const form2 = document.getElementById("login-form-2");
+form2.addEventListener("submit", function(event) {
+  // Evitar que la página se recargue
+  event.preventDefault();
+
+  // Validar el correo electrónico y la contraseña
+  const email = form2.email.value;
+  const password = form2.password.value;
+  if (email.trim() === "") {
+    showError("Por favor, ingresa tu correo electrónico.", form2);
+  } else if (!isValidEmail(email)) {
+    showError("Por favor, ingresa un correo electrónico válido.", form2);
+  } else if (password.trim() === "") {
+    showError("Por favor, ingresa tu contraseña.", form2);
+  } else {
+    // Todos los campos son válidos, enviar el formulario
+    form2.submit();
+  }
+});
+
+// Función para mostrar un mensaje de error
+function showError(message, form) {
+  // Obtener el elemento del mensaje de error
+  const errorElement = form.querySelector(".error-message");
+
+  // Mostrar el mensaje de error y agregar la clase CSS "show"
+  errorElement.innerHTML = message;
+  errorElement.classList.add("show");
+
+  // Enfocar el primer campo con error
+  form.querySelector(".form-group input").focus();
+}
+
+// Función para validar un correo electrónico
+function isValidEmail(email) {
+  // Expresión regular para validar un correo electrónico
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+})
