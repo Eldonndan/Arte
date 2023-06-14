@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+  {%load static%}
+    <head>
+        <meta charset="utf-8">
+        <!-- Etiquetas <meta> obligatorias para Bootstrap -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Enlazando el CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="validate.js"></script>
+    
+    <title>Agregar Obras - Gound Zero</title>
+    <link rel="icon" href="img/lienzo.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+            <img src="img/logo.png" alt="Logo de la página">
+            </div>
+        </header>
+
+
+        <div class="popup" id="popup">
+            <div class="icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <p>Se ha iniciado la sesión correctamente</p>
+        </div>
+        
+        <script>
+            window.onload = function() {
+                var popup = document.getElementById("popup");
+                popup.classList.add("show");
+                setTimeout(function() {
+                    popup.classList.remove("show");
+                }, 2000);
+            };
+        </script>
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" ></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="Index.html">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="galeria.html">Galería</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="formulario.html">Ayuda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="TipoUsuario.html">Acceder</a>
+                </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    </form>
+            </div>
+            </nav>
+
+    </header>
+
+    <div class="separacion"></div>
+
+    <div class="formulario-container">
+        <form action="procesar-formulario.php" method="POST">
+            <label for="nombre">Cantidad de obras subidas: 2</label >
+        </form>
+    </div>
+
+    <div class="separacion"></div>
+
+    <div class="formulario-container">
+        <form action="procesar-formulario.php" method="POST">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+        
+            <label for="telefono">Número de teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+        
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="titulo">Título de la obra:</label>
+            <input type="text" id="titulo" name="titulo" required>
+        
+            <label for="dimensiones">Dimensiones:</label>
+            <input type="text" id="dimensiones" name="dimensiones" required>
+        
+            <label for="tecnica">Técnica utilizada:</label>
+            <select id="country" class="form-control" name="country">
+                <option value=""></option>
+                <option value="AC">Acuarela</option>
+                <option value="OL">Óleo</option>
+                <option value="ACR">Acrílico</option>
+                <option value="PAS">Pastel</option>
+                <option value="TNC">Tinta china</option>
+            </select>
+
+            <div class="separacion"></div>
+
+            <label>Categoría:</label>
+            <div class="checkbox-container">
+              <input type="checkbox" name="categoria[]" value="contemporaneo">
+              <label>Contemporáneo</label>
+              <br>
+              <input type="checkbox" name="categoria[]" value="precolombino">
+              <label>Precolombino</label>
+              <br>
+              <input type="checkbox" name="categoria[]" value="otro">
+              <label>Otro</label>
+            </div>
+
+            <div class="separacion"></div>
+
+            <label>¿Quieres que la obra sea destacada?</label>
+            <div class="radio-container">
+              <input type="radio" name="destacada" value="si">
+              <label>Sí</label>
+              <br>
+              <input type="radio" name="destacada" value="no">
+              <label>No</label>
+            </div>
+
+
+
+        
+            <label  for="Fecha_obra">Fecha de la obra</label>
+            <input id="birthdate" class="form-control" type="date" placeholder="YYYY-MM-DD" name="birthdate">
+        
+            <label for="descripcion">Descripción de la obra:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+        
+            <label for="historial">Historial de la obra:</label>
+            <textarea id="historial" name="historial"></textarea>
+        
+            <label for="imagen1">Imagen de la obra (1):</label>
+            <input type="file" id="imagen1" name="imagen1" accept="image/*" required>
+        
+            <label for="imagen2">Imagen de la obra (2):</label>
+            <input type="file" id="imagen2" name="imagen2" accept="image/*" required>
+        
+            <label for="cv">Currículum vitae:</label>
+            <input type="file" id="cv" name="cv" accept="application/pdf">
+        
+            <label for="referencias">Referencias:</label>
+            <textarea id="referencias" name="referencias"></textarea>
+        
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+
+
+<!-- FOOTER -->
+<div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
+    <footer>
+        <div class="row my-5 justify-content-center py-5">
+            <div class="col-11">
+                <div class="row ">
+                    <div class="col-xl-8 col-md-4 col-sm-4 col-12   my-auto mx-auto a"><h3 class="text-muted mb-md-0 mb-5 bold-text">GROUND ZERO - Galeria de Arte.</h3></div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-12"><h6 class="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6><ul class="list-unstyled"><li><a href="index.html">Inicio</a></li><li><a href="galeria.html">Galeria</a></li> <li><a href="formulario.html">Ayuda</a></li> </ul></div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-12"><h6 class="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5"><b>DIRECCION</b></h6><p class="mb-1">605, RATAN ICON BUILDING</p><p>SEAWOODS SECTOR</p> </div>
+                </div>
+                <div class="row ">
+                    <div class="col-xl-8 col-md-4 col-sm-4 col-auto  my-md-0 mt-5 order-sm-1 order-3 align-self-end"><p class="social text-muted mb-0 pb-0 bold-text"> <span  class="mx-2"><i class="fa fa-facebook" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-linkedin-square" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-twitter" aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-instagram" aria-hidden="true"></i></span> </p><small class="rights"><span>&#174;</span> Ground Zero All Rights Reserved.</small></div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end "><h6 class="mt-55 mt-2 text-muted bold-text"><b>CONTACTO</b></h6><small> <span><i class="fa fa-envelope" aria-hidden="true"></i></span> GrounZero@gmail.com</small></div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-2 align-self-end mt-3   "><h6 class="text-muted bold-text"><b>PATROCINADO POR:</b></h6><small><span><i class="fa fa-envelope" aria-hidden="true"></i></span> Galeria de Artes de Chile</small></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    (function() {
+      // Before using it we must add the parse and format functions
+      // Here is a sample implementation using moment.js
+      validate.extend(validate.validators.datetime, {
+        // The value is guaranteed not to be null or undefined but otherwise it
+        // could be anything.
+        parse: function(value, options) {
+          return +moment.utc(value);
+        },
+        // Input is a unix timestamp
+        format: function(value, options) {
+          var format = options.dateOnly ? "YYYY-MM-DD" : "YYYY-MM-DD hh:mm:ss";
+          return moment.utc(value).format(format);
+        }
+      });
+
+      // These are the constraints used to validate the form
+      var constraints = {
+        email: {
+          // Email is required
+          presence: true,
+          // and must be an email (duh)
+          email: true
+        },
+        password: {
+          // Password is also required
+          presence: true,
+          // And must be at least 5 characters long
+          length: {
+            minimum: 5
+          }
+        },
+        "confirm-password": {
+          // You need to confirm your password
+          presence: true,
+          // and it needs to be equal to the other password
+          equality: {
+            attribute: "password",
+            message: "^The passwords does not match"
+          }
+        },
+        username: {
+          // You need to pick a username too
+          presence: true,
+          // And it must be between 3 and 20 characters long
+          length: {
+            minimum: 3,
+            maximum: 20
+          },
+          format: {
+            // We don't allow anything that a-z and 0-9
+            pattern: "[a-z0-9]+",
+            // but we don't care if the username is uppercase or lowercase
+            flags: "i",
+            message: "can only contain a-z and 0-9"
+          }
+        },
+        birthdate: {
+          // The user needs to give a birthday
+          presence: true,
+          // and must be born at least 18 years ago
+          date: {
+            latest: moment().subtract(18, "years"),
+            message: "^You must be at least 18 years old to use this service"
+          }
+        },
+        country: {
+          // You also need to input where you live
+          presence: true,
+          // And we restrict the countries supported to Sweden
+          inclusion: {
+            within: ["SE"],
+            // The ^ prevents the field name from being prepended to the error
+            message: "^Sorry, this service is for Sweden only"
+          }
+        },
+        zip: {
+          // Zip is optional but if specified it must be a 5 digit long number
+          format: {
+            pattern: "\\d{5}"
+          }
+        },
+        "number-of-children": {
+          presence: true,
+          // Number of children has to be an integer >= 0
+          numericality: {
+            onlyInteger: true,
+            greaterThanOrEqualTo: 0
+          }
+        }
+      };
+
+      // Hook up the form so we can prevent it from being posted
+      var form = document.querySelector("form#main");
+      form.addEventListener("submit", function(ev) {
+        ev.preventDefault();
+        handleFormSubmit(form);
+      });
+
+      // Hook up the inputs to validate on the fly
+      var inputs = document.querySelectorAll("input, textarea, select")
+      for (var i = 0; i < inputs.length; ++i) {
+        inputs.item(i).addEventListener("change", function(ev) {
+          var errors = validate(form, constraints) || {};
+          showErrorsForInput(this, errors[this.name])
+        });
+      }
+
+      function handleFormSubmit(form, input) {
+        // validate the form against the constraints
+        var errors = validate(form, constraints);
+        // then we update the form to reflect the results
+        showErrors(form, errors || {});
+        if (!errors) {
+          showSuccess();
+        }
+      }
+
+      // Updates the inputs with the validation errors
+      function showErrors(form, errors) {
+        // We loop through all the inputs and show the errors for that input
+        _.each(form.querySelectorAll("input[name], select[name]"), function(input) {
+          // Since the errors can be null if no errors were found we need to handle
+          // that
+          showErrorsForInput(input, errors && errors[input.name]);
+        });
+      }
+
+      // Shows the errors for a specific input
+      function showErrorsForInput(input, errors) {
+        // This is the root of the input
+        var formGroup = closestParent(input.parentNode, "form-group")
+          // Find where the error messages will be insert into
+          , messages = formGroup.querySelector(".messages");
+        // First we remove any old messages and resets the classes
+        resetFormGroup(formGroup);
+        // If we have errors
+        if (errors) {
+          // we first mark the group has having errors
+          formGroup.classList.add("has-error");
+          // then we append all the errors
+          _.each(errors, function(error) {
+            addError(messages, error);
+          });
+        } else {
+          // otherwise we simply mark it as success
+          formGroup.classList.add("has-success");
+        }
+      }
+
+      // Recusively finds the closest parent that has the specified class
+      function closestParent(child, className) {
+        if (!child || child == document) {
+          return null;
+        }
+        if (child.classList.contains(className)) {
+          return child;
+        } else {
+          return closestParent(child.parentNode, className);
+        }
+      }
+
+      function resetFormGroup(formGroup) {
+        // Remove the success and error classes
+        formGroup.classList.remove("has-error");
+        formGroup.classList.remove("has-success");
+        // and remove any old messages
+        _.each(formGroup.querySelectorAll(".help-block.error"), function(el) {
+          el.parentNode.removeChild(el);
+        });
+      }
+
+      // Adds the specified error with the following markup
+      // <p class="help-block error">[message]</p>
+      function addError(messages, error) {
+        var block = document.createElement("p");
+        block.classList.add("help-block");
+        block.classList.add("error");
+        block.innerText = error;
+        messages.appendChild(block);
+      }
+
+      function showSuccess() {
+        // We made it \:D/
+        alert("Success!");
+      }
+    })();
+  </script>
+
+<!-- Opcional: enlazando el JavaScript de Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
