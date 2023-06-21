@@ -6,9 +6,9 @@ def index(request):
     context={}
     return render(request, 'index.html', context)
 
-def admin(request):
+def administrador(request):
     context={}
-    return render(request, 'admin.html', context)
+    return render(request, 'administrador.html', context)
 
 def agregarO(request):
     context={}

@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Iniciar sesión - Ground Zero</title>
-<link rel="icon" href="img/lienzo.png">
-<link rel="stylesheet" href="style.css">
+<link rel="icon" href="{% static 'img/lienzo.png' %}">
+<link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <script>
   function cifrar(){
@@ -14,12 +14,11 @@
      input_pass.value = SHA1(input_pass.value);		
  }
 </script>
-<script type="text/javascript" src="validate.js"></script>
 <body>
   <div class="login-wrapper">
     <div class="login-box">
       <h1>Iniciar sesión</h1>
-      <form id="login-form" action="agregarO.html">
+      <form id="login-form" action="{% url 'agregarO' %}">
         <div class="form-group">
           <label for="email">Correo electrónico:</label>
           <input type="email" id="email" name="email" required>
@@ -36,6 +35,6 @@
     </div>
   </div>
 
-  <script src="validate.js"></script>
+  <script src="{% static 'validate.js' %}"></script>
 </body>
 </html>

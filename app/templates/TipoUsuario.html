@@ -4,14 +4,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Iniciar sesión - Ground Zero</title>
-<link rel="icon" href="img/lienzo.png">
-<link rel="stylesheet" href="style.css">
+<link rel="icon" href="{% static 'img/lienzo.png' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
   <div class="login-container">
     <div class="login-box">
-      <button class="login-button artist-button" onclick="window.location.href='loginAR.html';">Artista</button>
-      <button class="login-button admin-button" onclick="window.location.href='loginAD.html';">Administrador</button>
+      <button class="login-button artist-button" onclick="window.location.href='{% url 'loginAR' %}';">Artista</button>
+      <button class="login-button admin-button" onclick="window.location.href='{% url 'loginAD' %}';">Administrador</button>
     </div>
     </div>
   </div>
