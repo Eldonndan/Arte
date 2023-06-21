@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from . models import Artista
 
 # Create your views here.
 
@@ -49,3 +50,29 @@ def obra4(request):
 def TipoUsuario(request):
     context={}
     return render(request, 'TipoUsuario.html', context)
+
+def registro(request):
+    if request.method == 'POST':
+        # procesar la solicitud POST
+        rut = request.POST.get("rut")
+        nombre = request.POST.get("nombre")
+        apellido = request.POST.get("apellido")
+        correo = request.POST.get("email")
+        telefono = request.POST.get("telefono")
+        contraseña = request.POST.get("password")
+        obj = Artista.objects.create(
+            rut=rut,
+            nombre=nombre,
+            apellido=apellido,
+            correo=correo,
+            telefono=telefono,
+            contraseña=contraseña,
+        )
+        obj.save()
+        context = {"mensaje": "Artista Ingresado Exitosamente!!!!!"}
+        return render(request, "r.html", context)
+    else:
+        # si no es una solicitud POST, renderizar la plantilla de registro
+        return render(request, "r.html")
+
+
