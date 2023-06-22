@@ -76,3 +76,30 @@ def registro(request):
         return render(request, "r.html")
 
 
+def obra(request):
+    if request.method == 'POST':
+        # procesar la solicitud POST
+        nombre = request.POST.get("nombre")
+        dimensiones = request.POST.get("dimensiones")
+        destacada = request.POST.get("destacada")
+        fecha = request.POST.get("fecha")
+        descripcion = request.POST.get("descripcion")
+        imangen = request.POST.get("imagen")
+        obj = Obra.objects.create(
+            nombre=nombre,
+            dimensiones=dimensiones,
+            destacada=destacada,
+            fecha=fecha,
+            descripcion=descripcion,
+            imangen=imagen,
+        )
+        obj.save()
+        context = {"mensaje": "Obra Ingresada Exitosamente!!!!!"}
+        return render(request, "Obra.html", context)
+    else:
+        # si no es una solicitud POST, renderizar la plantilla de registro
+        return render(request, "Obra.html")
+
+
+
+
