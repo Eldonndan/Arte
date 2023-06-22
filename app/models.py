@@ -34,8 +34,8 @@ class Obra(models.Model):
     fecha = models.DateField()
     descripcion = models.CharField(max_length=500)
     imagen = models.ImageField(upload_to='obras/')
-    administradores = models.ManyToManyField(Administrador)
-    artistas = models.ManyToManyField(Artista)
+    administradores = models.ManyToManyField(Administrador, related_name='obras_administradas')
+    artistas = models.ManyToManyField(Artista, related_name='obras_creadas')
     categorias = models.ManyToManyField('Categoria')
     tipo_obra = models.ForeignKey(TipoObra, on_delete=models.CASCADE)
 

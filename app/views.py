@@ -1,7 +1,8 @@
-from . models import Artista
+from . models import Artista, Obra
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from .forms import ObraForm
 
 
 # Create your views here.
@@ -88,3 +89,17 @@ def login_view(request):
             messages.success(request, 'Nombre de usuario o Password no es correcto...!')
     return render(request, 'loginAR.html')
 
+def crear_obra(request):
+    if request.method == 'POST':
+        form = ObraForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_obras')
+    else:
+        form = ObraForm()
+    return render(request, 'crear_obra.html', {'form': form})
+
+def listar_obras(request):
+    obras = Obra.objects.all()
+    context = {'obras': obras}
+    return render(request, 'administrador.html', context)
