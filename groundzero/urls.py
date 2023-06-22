@@ -34,6 +34,5 @@ urlpatterns = [
     path('obra4/', views.obra4, name='obra4'),
     path('TipoUsuario/', views.TipoUsuario, name='TipoUsuario'),
     path('registro/', views.registro, name='registro'),
-    path('obra/', views.obra, name='obra'),
     path('login/', views.login_view, name='login'),
 ]

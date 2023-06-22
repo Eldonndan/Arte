@@ -1,5 +1,8 @@
-from django.shortcuts import render
 from . models import Artista
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -12,8 +15,7 @@ def administrador(request):
     return render(request, 'administrador.html', context)
 
 def agregarO(request):
-    context={}
-    return render(request, 'agregarO.html', context)
+    return render(request, 'agregarO.html')
 
 def formulario(request):
     context={}
@@ -75,31 +77,19 @@ def registro(request):
         # si no es una solicitud POST, renderizar la plantilla de registro
         return render(request, "r.html")
 
-
-def obra(request):
+def login_view(request):
     if request.method == 'POST':
-        # procesar la solicitud POST
-        nombre = request.POST.get("nombre")
-        dimensiones = request.POST.get("dimensiones")
-        destacada = request.POST.get("destacada")
-        fecha = request.POST.get("fecha")
-        descripcion = request.POST.get("descripcion")
-        imangen = request.POST.get("imagen")
-        obj = Obra.objects.create(
-            nombre=nombre,
-            dimensiones=dimensiones,
-            destacada=destacada,
-            fecha=fecha,
-            descripcion=descripcion,
-            imangen=imagen,
-        )
-        obj.save()
-        context = {"mensaje": "Obra Ingresada Exitosamente!!!!!"}
-        return render(request, "Obra.html", context)
-    else:
-        # si no es una solicitud POST, renderizar la plantilla de registro
-        return render(request, "Obra.html")
-
-
-
-
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        print('Email:', email)
+        print('Contraseña:', password)
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, '¡Inicio de sesión exitoso!')
+            print('Inicio de sesión exitoso:', user)
+            return redirect('index')
+        else:
+            messages.error(request, 'Credenciales inválidas. Por favor, inténtalo de nuevo.')
+            print('Credenciales inválidas.')
+    return render(request, 'loginAR.html')
