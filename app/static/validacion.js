@@ -87,3 +87,26 @@ function validarRUT(rut) {
   }
   
   validarFormulario();
+
+// Verificar si el usuario está autenticado y actualizar el estado de inicio de sesión en la barra de navegación
+function checkAuthentication() {
+  
+
+  const loginStatusElement = document.getElementById('login-status');
+  if (isLoggedIn) {
+    loginStatusElement.innerHTML = '<button onclick="logout()">Cerrar sesión</button>';
+  } else {
+    loginStatusElement.innerHTML = '<a href="TipoUsuario.html">Acceder</a>';
+  }
+}
+
+// Función para cerrar sesión
+function logout() {
+  // Aquí eliminarías la cookie o el token de autenticación
+  checkAuthentication();
+}
+
+// Llamar a la función checkAuthentication() cuando la página se carga
+window.onload = function() {
+  checkAuthentication();
+}

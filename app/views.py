@@ -79,17 +79,12 @@ def registro(request):
 
 def login_view(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        print('Email:', email)
-        print('Contraseña:', password)
-        user = authenticate(request, username=email, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(request, '¡Inicio de sesión exitoso!')
-            print('Inicio de sesión exitoso:', user)
-            return redirect('index')
-        else:
-            messages.error(request, 'Credenciales inválidas. Por favor, inténtalo de nuevo.')
-            print('Credenciales inválidas.')
+        try:
+            detalleArtista=Artista.objects.get(correo=request.POST['email'], contraseña=request.POST['password'])
+            print("Artista=",detalleArtista)
+            request.session['correo']=detalleArtista.correo
+            return render(request, 'agregarO.html')
+        except Artista.DoesNotExist as e:
+            messages.success(request, 'Nombre de usuario o Password no es correcto...!')
     return render(request, 'loginAR.html')
+
