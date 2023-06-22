@@ -12,7 +12,7 @@ class Artista(models.Model):
     rut = models.CharField(max_length=12, primary_key=True)
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
-    correo = models.CharField(max_length=30)
+    correo =models.EmailField(unique=True)
     telefono = models.BigIntegerField()
     contraseña = models.CharField(max_length=300)
 
