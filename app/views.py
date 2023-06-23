@@ -1,8 +1,9 @@
-from . models import Artista, Obra
+from . models import Artista, Categoria, Obra
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ObraForm
+from . forms import ObraForm
+
 
 
 # Create your views here.
@@ -54,6 +55,7 @@ def TipoUsuario(request):
     context={}
     return render(request, 'TipoUsuario.html', context)
 
+
 def registro(request):
     if request.method == 'POST':
         # procesar la solicitud POST
@@ -103,3 +105,44 @@ def listar_obras(request):
     obras = Obra.objects.all()
     context = {'obras': obras}
     return render(request, 'administrador.html', context)
+
+
+def listar_categorias(request):
+    categorias = Categoria.objects.all()
+    context = {'categorias': categorias}
+    return render(request, 'listar_categorias.html', context)
+
+def inserta_obra(request):
+    if request.method != "POST":
+        categorias = Categoria.objects.all()
+        context = {"categorias": categorias}
+        return render(request, 'inserta_obra.html', context)
+    else:
+        categorias = Categoria.objects.all()
+        nombre = request.POST["nombre"]
+        dimensiones = request.POST["dimensiones"]
+        destacada = request.POST["destacada"]  == "True"
+        fecha = request.POST["fecha"]
+        descripcion = request.POST["descripcion"]
+        imagen = request.FILES["imagen"]
+        categorias = request.POST["categoria"]  # Obtener el ID de la categoría seleccionada
+        tipo_obra = request.POST["tipo_obra"]
+
+        try:
+            objCate = Categoria.objects.get(id_cate=categorias)
+            obj = Obra(
+                nombre=nombre,
+                dimensiones=dimensiones,
+                destacada=destacada,
+                fecha=fecha,
+                descripcion=descripcion,
+                imagen=imagen,
+                categorias=objCate,
+                tipo_obra=tipo_obra, # Asignar la instancia de la categoría directamente
+            )
+            obj.save()
+            context = {"mensaje": 'Obra Ingresada Exitosamente!'}
+            return render(request, 'agregarO.html', context)
+        except Categoria.DoesNotExist:
+            context = {"mensaje": 'Error: Categoría no encontrada'}
+            return render(request, 'agregarO.html', context)

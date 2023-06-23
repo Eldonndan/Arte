@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     {% extends 'menu.html' %}
@@ -7,10 +8,17 @@
     <title>Agregar Obras - Ground Zero</title>
     </head>
 
-
+    
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
     <body>
         
-    
+
         
         <div class="popup" id="popup">
             <div class="icon">
@@ -79,17 +87,7 @@
                     <option value="{{ categoria.id_cate }}">{{ categoria.nombre }}</option>
                 {% endfor %}
             </select>
-
-            <label for="tecnica">Técnica utilizada:</label>
-            <select id="country" class="form-control" name="tipo_obra">
-                <option value=""></option>
-                <option value="AC">Acuarela</option>
-                <option value="OL">Óleo</option>
-                <option value="ACR">Acrílico</option>
-                <option value="PAS">Pastel</option>
-                <option value="TNC">Tinta china</option>
-            </select>
-
+            
             <div class="separacion"></div>
 
             <input type="submit" value="Enviar">
@@ -97,15 +95,6 @@
         
     </div>
 <!-- FOOTER -->
-
-
-{% if messages %}
-<ul class="messages">
-{% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-{% endfor %}
-</ul>
-{% endif %}
 </body>
 {% endblock content%}
 </html>

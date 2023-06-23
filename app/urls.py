@@ -20,4 +20,6 @@ urlpatterns = [
     path('obra4/', views.obra4, name='obra4'),
     path('TipoUsuario/', views.TipoUsuario, name='TipoUsuario'),
     path('registro/', views.registro, name='registro'),
+    path('inserta_obra',views.inserta_obra,name='inserta_obra'),
+    path('listar_categorias/', views.listar_categorias, name='listar_categorias'),
 ]

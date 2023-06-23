@@ -12,12 +12,16 @@ class Artista(models.Model):
     rut = models.CharField(max_length=12, primary_key=True)
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
-    correo =models.EmailField(unique=True)
+    correo = models.EmailField(unique=True)
     telefono = models.BigIntegerField()
     contraseña = models.CharField(max_length=300)
 
 class TipoObra(models.Model):
     id_tipo = models.BigIntegerField(primary_key=True)
+    nombre = models.CharField(max_length=100)
+
+class Categoria(models.Model):
+    id_cate = models.BigIntegerField(primary_key=True)
     nombre = models.CharField(max_length=100)
 
 class Duda(models.Model):
@@ -27,7 +31,7 @@ class Duda(models.Model):
     administrador = models.ForeignKey(Administrador, on_delete=models.CASCADE)
 
 class Obra(models.Model):
-    id_obra = models.BigIntegerField(primary_key=True)
+    id_obra = models.AutoField(db_column='idObra', primary_key=True)
     nombre = models.CharField(max_length=500)
     dimensiones = models.CharField(max_length=50)
     destacada = models.BooleanField()
@@ -36,13 +40,8 @@ class Obra(models.Model):
     imagen = models.ImageField(upload_to='obras/')
     administradores = models.ManyToManyField(Administrador, related_name='obras_administradas')
     artistas = models.ManyToManyField(Artista, related_name='obras_creadas')
-    categorias = models.ManyToManyField('Categoria')
+    categorias = models.ForeignKey(Categoria, on_delete=models.CASCADE, default=None)
     tipo_obra = models.ForeignKey(TipoObra, on_delete=models.CASCADE)
-
-class Categoria(models.Model):
-    id_cate = models.BigIntegerField(primary_key=True)
-    nombre = models.CharField(max_length=100)
-    obras = models.ManyToManyField(Obra)
 
 class RelacionArtistaObra(models.Model):
     artista = models.ForeignKey(Artista, on_delete=models.CASCADE)
