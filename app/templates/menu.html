@@ -24,7 +24,7 @@
         </header>
 
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" ></span>
@@ -40,14 +40,45 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'formulario' %}">Ayuda</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'TipoUsuario' %}">Acceder</a>
-                </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            {% csrf_token %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Bienvenido, {{ user.first_name }} (Administrador)
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{% url 'crud_tecnica' %}">TÃ©cnica</a>                                   
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{% url 'logout' %}" method="post">Logout</a>
+                                </div>
+                            </li>
+                        {% else %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Bienvenido, {{ user.first_name }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{% url 'crud' %}">Obra</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{% url 'logout' %}" method="post">Logout</a>
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% else %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cuenta
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'crear' %}">Registrarse</a>
+                                <a class="dropdown-item" href='http://127.0.0.1:8000/login'>Login</a>
+                            </div>
+                        </li>
+                    {% endif %}
+                </form>
             </div>
         </nav>
 

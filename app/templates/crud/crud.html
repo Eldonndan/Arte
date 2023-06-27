@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'menu.html' %}
+	{% block content%}
+	{%load static%}
+<head>
+    <title>Crud</title>
+</head>
+<body>
+<h1>LISTADO OBRAS</h1>
+
+	
+	<br><br><button><a href="{% url 'inserta_obra' %}">Agregar</a></button>
+
+<table>
+	<th>TITULO</th>
+	<th>DIMESIONES</th>
+	<th>FECHA</th>
+    <th>DESCRIPCION</th>
+    <th>IMAGEN</th>
+	<th>TECNICA</th>
+    <th>DESTACADA</th>
+
+{% for ob in obras %}
+	<tr>
+        
+		<td>{{ob.titulo}}</td>
+		<td>{{ob.dimensiones}} px</td>
+		<td>{{ob.fecha|date:'d-m-Y'}}</td>
+		<td>{{ob.descripcion}}</td>
+        {% if ob.imagen %}
+        <td><img src="{{ ob.imagen.url }}" width="100"></td>
+    {% else %}
+        <td>No imagen</td>
+    {% endif %}
+		<td>{{ob.id_tecnica.tecnica}}</td>
+		{% if ob.destacada == 1 %}
+			<td>Destacada</td>			
+		{% else %} 
+			<td>No Destacada</td>	
+		{% endif %} 
+        <td><a href="{% url 'busca_obra' pk=ob.id_obra %}">Modificar</a></td>
+        <td><a href="{% url 'borra_obra' pk=ob.id_obra %}">Eliminar</a></td>
+	</tr>
+{% endfor %}
+</table>
+</body>
+</html>
+{% endblock content%}

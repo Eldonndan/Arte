@@ -1,0 +1,31 @@
+<h1>Modificación de Obra</h1>
+{% if obra %}
+	<form action="{% url 'modifica_obra' pk=obra.id_obra %}" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+		<pre>Titulo			: <input type="text" name="titulo" value="{{obra.titulo}}"></pre>
+		<pre>Dimensiones   	: <input type="text" name="dimensiones" value="{{obra.dimensiones}}"></pre>
+		<pre>Descripcion 	: <input type="text" name="descripcion" value="{{obra.descripcion}}"></pre>
+		<pre>Fecha           	: <input type="date" name="fecha" value="{{obra.fecha|date:'Y-m-d'}}"></pre>
+		<pre>Tecnica 		  	: <select name="tecnica">
+									{% for te in tecnicas %}
+										{% if te.tecnica == obra.id_tecnica.tecnica %}							
+											<option value="{{te.id_tecnica}}" selected>{{te.tecnica}} </option>
+										{% else %}
+											<option value="{{te.id_tecnica}}">{{te.tecnica}} </option>
+										{% endif %}
+									{% endfor %}
+								</select></pre>
+                                <label>¿Quieres que la obra sea destacada?</label>
+                                {% if obra.destacada %}
+                                <input type="checkbox" name="destacada" checked>
+                            {% else %}
+                                <input type="checkbox" name="destacada">
+                            {% endif %}
+                            <pre>Imagen existente:</pre>
+                            <img src="{{ obra.imagen.url }}" width="100">
+                            <pre>Seleccionar nueva imagen:</pre>
+                            <pre><input type="file" id="imagen" name="imagen" accept="image/*"></pre>
+		<pre>			<input type="submit" name="opcion" value="Modificar">
+	</form>
+	<a href="{% url 'crud'%}">Volver</a></td>
+{% endif %}

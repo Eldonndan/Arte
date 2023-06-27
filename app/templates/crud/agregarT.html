@@ -1,0 +1,16 @@
+{% extends 'menu.html' %}
+{% block content%}
+{%load static%}
+<h1>Formulario Ingreso Tecnica</h1>
+{% if msg %}
+	{{ msg }}<br><br>
+{% endif %}
+<form action="{% url 'inserta_tecnica'%}" method="POST">
+	{% csrf_token %}
+	{{ form.as_table }}
+<input type="submit" name="opcion" value="Agregar">
+</form>
+<a href="{% url 'crud_tecnica' %}">Volver</a></td>
+
+{% endblock content%}
+

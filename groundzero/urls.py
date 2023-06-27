@@ -16,25 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from app import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/',include('app.urls')),
-    path('index/',views.index, name='index'),
-    path('administrador/', views.administrador, name='administrador'),
-    path('agregarO/', views.agregarO, name='agregarO'),
-    path('formulario/', views.formulario, name='formulario'),
-    path('galeria/', views.galeria, name='galeria'),
-    path('loginAD/', views.loginAD, name='loginAD'),
-    path('loginAR/', views.loginAR, name='loginAR'),
-    path('obra1/', views.obra1, name='obra1'),
-    path('obra2/', views.obra2, name='obra2'),
-    path('obra3/', views.obra3, name='obra3'),
-    path('obra4/', views.obra4, name='obra4'),
-    path('TipoUsuario/', views.TipoUsuario, name='TipoUsuario'),
-    path('registro/', views.registro, name='registro'),
-    path('login/', views.login_view, name='login'),
-    path('inserta_obra',views.inserta_obra,name='inserta_obra'),
-    path('listar_categorias/', views.listar_categorias, name='listar_categorias'),
+    path('', include('django.contrib.auth.urls')),
+
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

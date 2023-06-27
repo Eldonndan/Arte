@@ -1,0 +1,21 @@
+{% extends 'menu.html' %}
+{% block content%}
+{%load static%}
+<h1>DESPLIEGE DE TECNICAS</h1>
+<button type="button">
+	<a href="{% url 'inserta_tecnica' %}">Agregar</a>
+</button>
+
+<table>
+	<th>CODIGO</th>
+	<th>NOMBRE</th>
+{% for te in tecnicas %}
+	<tr>
+		<td>{{te.id_tecnica}}</td>
+		<td>{{te.tecnica}}</td>
+		<td><a href="{% url 'modifica_tecnica' pk=te.id_tecnica%}">Modificar</a></td>
+		<td><a href="{% url 'borra_tecnica' pk=te.id_tecnica%}">Eliminar</a></td>
+	</tr>
+{% endfor %}
+</table>
+{% endblock content%}

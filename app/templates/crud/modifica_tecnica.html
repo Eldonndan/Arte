@@ -1,0 +1,15 @@
+{% extends 'menu.html' %}
+{% block content%}
+{%load static%}
+<h1>Formulario Modificacion Tecnica</h1>
+{% if msg %}
+	{{ msg }}<br><br>
+{% endif %}
+<form action="{% url 'modifica_tecnica' pk=tecnica.id_tecnica%}" method="POST">
+	{% csrf_token %}
+	{{ form.as_table }}
+<input type="submit" name="opcion" value="Modificar">
+</form>
+<a href="{% url 'crud_tecnica'%}">Volver</a></td>
+
+{% endblock content%}

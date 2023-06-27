@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+    <head>
+    <title>Agregar Obras - Ground Zero</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <body>
+    <div class="separacion"></div>
+
+    <div class="formulario-container">
+        {% if mensaje %}
+            {{ mensaje }}
+            <br><br>
+            <button class="btn btn-secondary mb-2 bg-dark " onclick=location.href='{% url "crud" %}'>Volver</button>
+        {% else %}
+        <form  action="{% url 'inserta_obra'%}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="titulo">Título de la obra:</label>
+            <input type="text" id="titulo" name="titulo" required>
+        
+            <label for="dimensiones">Dimensiones:</label>
+            <input type="text" id="dimensiones" name="dimensiones" required>
+        
+            <label>¿Quieres que la obra sea destacada?</label>
+            <input type="checkbox" name="destacada">
+
+            <label for="fecha">Fecha de la obra:</label>
+            <input id="fecha" type="date" placeholder="YYYY-MM-DD" name="fecha">
+        
+            <label for="descripcion">Descripción de la obra:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+        
+            <label for="imagen">Imagen de la obra:</label>
+            <input type="file" id="imagen" name="imagen" accept="image/*" required>
+
+            <div class="separacion"></div>
+            
+            <select name="tecnica">
+                {% for te in tecnicas %}
+                    <option value="{{te.id_tecnica}}">{{te.tecnica}} </option>
+                {% endfor %}
+            </select>
+
+            <div class="separacion"></div>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+    <!-- FOOTER -->
+
+</body>
+</html>
+{% endif %}
