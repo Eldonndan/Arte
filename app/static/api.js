@@ -42,39 +42,4 @@ getFlickrPhotos('Vincent van Gogh').then(photos => {
 });
 
 
-// Obtener la tabla
-var tabla = document.getElementById("tabla-datos");
 
-// Crear una solicitud para leer el archivo JSON
-var solicitud = new XMLHttpRequest();
-solicitud.open("GET", "datos.json");
-
-// Cuando se carga el archivo JSON, generar la tabla
-solicitud.onload = function() {
-  if (solicitud.status == 200) {
-    // Convertir el texto JSON a un objeto JavaScript
-    var datos = JSON.parse(solicitud.responseText);
-    // Generar las filas de la tabla
-    for (var i = 0; i < datos.length; i++) {
-      var fila = tabla.insertRow();
-      
-      // Agregar checkbox a la primera celda
-      var checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.name = "seleccionado";
-      checkbox.value = datos[i].nombre_obra;
-      var cell = fila.insertCell();
-      cell.classList.add("checkbox-container");
-      cell.appendChild(checkbox);
-      
-      fila.insertCell().innerHTML = datos[i].nombre_artista;
-      fila.insertCell().innerHTML = datos[i].nombre_obra;
-      fila.insertCell().innerHTML = '<img src="' + datos[i].foto_obra + '" alt="Foto de la obra" width="100">';
-      fila.insertCell().innerHTML = datos[i].curriculum_vitae;
-      fila.insertCell().innerHTML = datos[i].descripcion_obra;
-    }
-  }
-};
-
-// Enviar la solicitud
-solicitud.send();

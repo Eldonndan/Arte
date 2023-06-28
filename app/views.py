@@ -43,6 +43,10 @@ def obra4(request):
     context={}
     return render(request, 'obra4.html', context)
 
+def artistas(request):
+    context={}
+    return render(request, 'artistas.html', context)
+
 
 def crear(request):
     if request.method != "POST":
@@ -72,11 +76,13 @@ def crear(request):
         )
         obj1.save()
         obj.save()
+        
         users = User.objects.all()
         context = {"mensaje": "Artista Ingresado Exitosamente!!!!!",
             'users': users
         }
-        return render(request, 'login.html', context)
+        return redirect('http://127.0.0.1:8000/login')
+
     
 @login_required
 def menu(request):

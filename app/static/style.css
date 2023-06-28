@@ -502,16 +502,16 @@ table {
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;
-  }
-  
-  .checkbox-container label {
+}
+
+.checkbox-container label {
     margin-left: 5px;
-  }
-  
-  .radio-container {
+}
+
+.radio-container {
     margin-bottom: 20px;
-  }
-  
-  .radio-container label {
+}
+
+.radio-container label {
     margin-left: 5px;
-  }
+}

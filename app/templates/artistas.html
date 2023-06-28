@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+{% extends 'menu.html' %}
+{% block content %}
+{%load static%}
+<head>
+    <title>API del Museo Metropolitano de Arte</title>
+    <style>
+        .artista {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: white;
+            overflow: hidden;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+        }
+
+        .artista .info {
+            flex: 1;
+            text-align: left;
+            padding-right: 20px;
+        }
+
+        .artista .imagen {
+            flex-shrink: 0;
+            text-align: right;
+        }
+
+        .artista img {
+            width: 300px; /* Ajusta el ancho de la imagen según tus necesidades */
+            height: auto; /* Ajusta la altura de la imagen según tus necesidades */
+            display: block; /* Elimina el espacio adicional debajo de la imagen */
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+    <script src="{% static 'api2.js' %}"></script>
+</head>
+    <body>
+        <div class="separacion"></div>
+        <div id="artistas-container"></div>
+    </body>
+{% endblock %}
+</html>
