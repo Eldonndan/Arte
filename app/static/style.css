@@ -502,16 +502,209 @@ table {
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;
-  }
-  
-  .checkbox-container label {
+}
+
+.checkbox-container label {
     margin-left: 5px;
-  }
-  
-  .radio-container {
+}
+
+.radio-container {
     margin-bottom: 20px;
+}
+
+.radio-container label {
+    margin-left: 5px;
+}
+
+
+.table-container {
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table-title {
+  text-align: center;
+  padding: 20px;
+  background-color: #009879;
+  color: #ffffff;
+  margin: 0;
+}
+
+.minimalist-table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.minimalist-table td, .minimalist-table th {
+  padding: 12px 15px;
+}
+
+.minimalist-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.minimalist-table tbody tr {
+  background-color: #f3f3f3;
+}
+
+
+
+
+
+.add-button {
+  display: block;
+  margin: 20px auto;
+  background-color: #009879;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.add-button a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.form-container {
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   }
   
-  .radio-container label {
-    margin-left: 5px;
+  .form-title {
+    text-align: center;
+    padding: 20px;
+    background-color: #009879;
+    color: #ffffff;
+    margin: 0;
+  }
+  
+  .form-message {
+    background-color: #f3f3f3;
+    color: #333;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  
+  .minimalist-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  
+  .minimalist-table td, .minimalist-table th {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .minimalist-table th {
+    background-color: #009879;
+    color: #ffffff;
+  }
+  
+  .minimalist-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .form-submit {
+    text-align: right;
+  }
+  
+  .form-submit input[type="submit"] {
+    background-color: #009879;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .form-link {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    color: #009879;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .form-container {
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .form-title {
+    text-align: center;
+    padding: 20px;
+    background-color: #009879;
+    color: #ffffff;
+    margin: 0;
+  }
+  
+  .form-message {
+    background-color: #f3f3f3;
+    color: #333;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  
+  .form-separator {
+    height: 1px;
+    background-color: #dddddd;
+    margin: 20px 0;
+  }
+  
+  .minimalist-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  
+  .minimalist-table td, .minimalist-table th {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .minimalist-table th {
+    background-color: #009879;
+    color: #ffffff;
+  }
+  
+  .minimalist-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .form-submit {
+    text-align: right;
+  }
+  
+  .form-submit input[type="submit"] {
+    background-color: #009879;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .form-link {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    color: #009879;
+    text-decoration: none;
+    font-weight: bold;
   }

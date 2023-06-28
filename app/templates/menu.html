@@ -1,7 +1,6 @@
 {%load static%}
 <html>
     <head>
-        <meta charset="utf-8">
         <!-- Etiquetas <meta> obligatorias para Bootstrap -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,7 +39,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'formulario' %}">Ayuda</a>
                 </li>
-                </ul>
                 <form class="form-inline my-2 my-lg-0">
                     {% if user.is_authenticated %}
                         {% if user.is_superuser %}
@@ -50,7 +48,7 @@
                                     Bienvenido, {{ user.first_name }} (Administrador)
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{% url 'crud_tecnica' %}">TÃ©cnica</a>                                   
+                                    <a class="dropdown-item" href="{% url 'crud_tecnica' %}">T&eacute;cnica</a>                                   
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'logout' %}" method="post">Logout</a>
                                 </div>
@@ -79,6 +77,8 @@
                         </li>
                     {% endif %}
                 </form>
+                </ul>
+                
             </div>
         </nav>
 

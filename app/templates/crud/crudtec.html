@@ -1,21 +1,43 @@
-{% extends 'menu.html' %}
-{% block content%}
-{%load static%}
-<h1>DESPLIEGE DE TECNICAS</h1>
-<button type="button">
-	<a href="{% url 'inserta_tecnica' %}">Agregar</a>
-</button>
+<!DOCTYPE html>
+<html lang="en">
+	{% extends 'menu.html' %}
+	{% block content%}
+	{%load static%}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Crear Tecnica</title>
+</head>
+<body>
+	<div class="table-container">
+		<h1 class="table-title">DESPLIEGE DE TECNICAS</h1>
+		<table class="minimalist-table">
+		  <thead>
+			<tr>
+			  <th>CODIGO</th>
+			  <th>NOMBRE</th>
+			  <th>MODIFICAR</th>
+			  <th>ELIMINAR</th>
+			</tr>
+		  </thead>
+		  <div class="separacion"></div>
+		  <tbody>
+			{% for te in tecnicas %}
+			<tr>
+			  <td>{{te.id_tecnica}}</td>
+			  <td>{{te.tecnica}}</td>
+			  <td><a href="{% url 'modifica_tecnica' pk=te.id_tecnica%}">Modificar</a></td>
+			  <td><a href="{% url 'borra_tecnica' pk=te.id_tecnica%}">Eliminar</a></td>
+			</tr>
+			{% endfor %}
+		  </tbody>
+		</table>
+		<button type="button" class="add-button">
+		  <a href="{% url 'inserta_tecnica' %}">Agregar</a>
+		</button>
+	</div>
+</body>
+</html>
 
-<table>
-	<th>CODIGO</th>
-	<th>NOMBRE</th>
-{% for te in tecnicas %}
-	<tr>
-		<td>{{te.id_tecnica}}</td>
-		<td>{{te.tecnica}}</td>
-		<td><a href="{% url 'modifica_tecnica' pk=te.id_tecnica%}">Modificar</a></td>
-		<td><a href="{% url 'borra_tecnica' pk=te.id_tecnica%}">Eliminar</a></td>
-	</tr>
-{% endfor %}
-</table>
+
 {% endblock content%}

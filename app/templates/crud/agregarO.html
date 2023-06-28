@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-    {% load static %}
+    {% extends 'menu.html' %}
+    {% block content%}
+    {%load static%}
     <head>
     <title>Agregar Obras - Ground Zero</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
@@ -52,3 +54,4 @@
 </body>
 </html>
 {% endif %}
+{% endblock content%}

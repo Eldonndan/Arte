@@ -1,15 +1,23 @@
 {% extends 'menu.html' %}
 {% block content%}
 {%load static%}
-<h1>Formulario Modificacion Tecnica</h1>
-{% if msg %}
-	{{ msg }}<br><br>
-{% endif %}
-<form action="{% url 'modifica_tecnica' pk=tecnica.id_tecnica%}" method="POST">
-	{% csrf_token %}
-	{{ form.as_table }}
-<input type="submit" name="opcion" value="Modificar">
-</form>
-<a href="{% url 'crud_tecnica'%}">Volver</a></td>
-
+<div class="form-container">
+  <h1 class="form-title">FORMULARIO INGRESO TECNICA</h1>
+  {% if msg %}
+  <div class="form-message">{{ msg }}</div>
+  {% endif %}
+  <form action="{% url 'modifica_tecnica' pk=tecnica.id_tecnica%}" method="POST">
+    {% csrf_token %}
+    <div class="form-separator"></div>
+    <table class="minimalist-table">
+      {{ form.as_table }}
+      <tr>
+        <td colspan="2" class="form-submit">
+          <input type="submit" name="opcion" value="Modificar">
+        </td>
+      </tr>
+    </table>
+  </form>
+  <a href="{% url 'crud_tecnica' %}" class="form-link">Volver</a>
+</div>
 {% endblock content%}
