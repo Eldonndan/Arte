@@ -18,9 +18,10 @@ urlpatterns = [
     path('obra4/', views.obra4, name='obra4'),
     path('crear/', views.crear, name='crear'),
     path('menu/', views.menu, name='menu'),
+    path('carrito/', views.verfavorito, name='carrito'),
 
     path('logout/', views.logout_view, name='logout'),
-
+    path('agregar_favorito/<int:obra_id>/', views.agregar_favorito, name='agregar_favorito'),
     path('crud_tecnica/', views.crud_tecnica, name='crud_tecnica'),
     path('inserta_tecnica', views.inserta_tecnica, name='inserta_tecnica'),
     path('borra_tecnica/<int:pk>',views.borra_tecnica,name='borra_tecnica'),
