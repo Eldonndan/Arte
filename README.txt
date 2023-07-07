@@ -6,4 +6,4 @@ python -m pip install Pillow
 
 Credenciales django
 admin
-123
+admin
