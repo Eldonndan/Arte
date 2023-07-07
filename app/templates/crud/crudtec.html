@@ -12,28 +12,28 @@
 	<div class="table-container">
 		<h1 class="table-title">DESPLIEGE DE TECNICAS</h1>
 		<table class="minimalist-table">
-		  <thead>
-			<tr>
-			  <th>CODIGO</th>
-			  <th>NOMBRE</th>
-			  <th>MODIFICAR</th>
-			  <th>ELIMINAR</th>
-			</tr>
-		  </thead>
-		  <div class="separacion"></div>
-		  <tbody>
-			{% for te in tecnicas %}
-			<tr>
-			  <td>{{te.id_tecnica}}</td>
-			  <td>{{te.tecnica}}</td>
-			  <td><a href="{% url 'modifica_tecnica' pk=te.id_tecnica%}">Modificar</a></td>
-			  <td><a href="{% url 'borra_tecnica' pk=te.id_tecnica%}">Eliminar</a></td>
-			</tr>
-			{% endfor %}
-		  </tbody>
-		</table>
-		<button type="button" class="add-button">
-		  <a href="{% url 'inserta_tecnica' %}">Agregar</a>
+			<thead>
+				<tr>
+				<th>CODIGO</th>
+				<th>NOMBRE</th>
+				<th>MODIFICAR</th>
+				<th>ELIMINAR</th>
+				</tr>
+			</thead>
+			<div class="separacion"></div>
+			<tbody>
+				{% for te in tecnicas %}
+				<tr>
+				<td>{{te.id_tecnica}}</td>
+				<td>{{te.tecnica}}</td>
+				<td><a href="{% url 'modifica_tecnica' pk=te.id_tecnica%}">Modificar</a></td>
+				<td><a href="{% url 'borra_tecnica' pk=te.id_tecnica%}">Eliminar</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			</table>
+			<button type="button" class="add-button">
+			<a href="{% url 'inserta_tecnica' %}">Agregar</a>
 		</button>
 	</div>
 </body>

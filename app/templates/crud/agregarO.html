@@ -2,20 +2,16 @@
 <html>
     {% extends 'menu.html' %}
     {% block content%}
-    {%load static%}
+    {% load static %}
     <head>
     <title>Agregar Obras - Ground Zero</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
     <body>
     <div class="separacion"></div>
 
     <div class="formulario-container">
-        {% if mensaje %}
-            {{ mensaje }}
-            <br><br>
-            <button class="btn btn-secondary mb-2 bg-dark " onclick=location.href='{% url "crud" %}'>Volver</button>
-        {% else %}
-        <form  action="{% url 'inserta_obra'%}" method="POST" enctype="multipart/form-data">
+        <form id="formulario-obra" action="{% url 'inserta_obra'%}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <label for="titulo">Título de la obra:</label>
             <input type="text" id="titulo" name="titulo" required>
@@ -49,9 +45,27 @@
         </form>
     </div>
 
-    <!-- FOOTER -->
+   <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Mensaje de Agregar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-message"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'validacionObra.js' %}"></script>
 
 </body>
 </html>
-{% endif %}
 {% endblock content%}

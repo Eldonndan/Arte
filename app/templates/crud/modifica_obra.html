@@ -1,31 +1,84 @@
-<h1>Modificación de Obra</h1>
-{% if obra %}
-	<form action="{% url 'modifica_obra' pk=obra.id_obra %}" method="post" enctype="multipart/form-data">
-	{% csrf_token %}
-		<pre>Titulo			: <input type="text" name="titulo" value="{{obra.titulo}}"></pre>
-		<pre>Dimensiones   	: <input type="text" name="dimensiones" value="{{obra.dimensiones}}"></pre>
-		<pre>Descripcion 	: <input type="text" name="descripcion" value="{{obra.descripcion}}"></pre>
-		<pre>Fecha           	: <input type="date" name="fecha" value="{{obra.fecha|date:'Y-m-d'}}"></pre>
-		<pre>Tecnica 		  	: <select name="tecnica">
-									{% for te in tecnicas %}
+<!DOCTYPE html>
+<html>
+    {% extends 'menu.html' %}
+    {% block content%}
+    {% load static %}
+    <head>
+    <title>Modificar Obra - Ground Zero</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+    <div class="separacion"></div>
+
+    <div class="formulario-container">
+        <form id="formulario-obra" action="{% url 'modifica_obra' pk=obra.id_obra %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="titulo">Título de la obra:</label>
+            <input type="text" id="titulo" name="titulo" value="{{obra.titulo}}" required>
+        
+            <label for="dimensiones">Dimensiones:</label>
+            <input type="text" id="dimensiones" name="dimensiones"value="{{obra.dimensiones}}" required>
+        
+			<label for="destacada">¿Quieres que la obra sea destacada?:</label>
+			{% if obra.destacada %}
+            <input type="checkbox" name="destacada" checked>
+			{% else %}
+			<input type="checkbox" name="destacada">
+			{% endif %}
+
+            <label for="fecha">Fecha de la obra:</label>
+            <input id="fecha" type="date" placeholder="YYYY-MM-DD" name="fecha" value="{{obra.fecha|date:'Y-m-d'}}">
+        
+            <label for="descripcion">Descripción de la obra:</label>
+			<textarea id="descripcion" name="descripcion" required>{{obra.descripcion}}</textarea>
+
+			
+			<label for="imagen actual">Imagen Actual</label>
+			<img src="{{ obra.imagen.url }}" width="100">
+            <label for="imagen">Seleccionar nueva imagen</label>
+			<input type="file" id="imagen" name="imagen" accept="image/*">
+
+            <div class="separacion"></div>
+
+            <label for="imagen actual">Tecnica</label>
+            <select name="tecnica">
+                {% for te in tecnicas %}
 										{% if te.tecnica == obra.id_tecnica.tecnica %}							
 											<option value="{{te.id_tecnica}}" selected>{{te.tecnica}} </option>
 										{% else %}
 											<option value="{{te.id_tecnica}}">{{te.tecnica}} </option>
 										{% endif %}
 									{% endfor %}
-								</select></pre>
-                                <label>¿Quieres que la obra sea destacada?</label>
-                                {% if obra.destacada %}
-                                <input type="checkbox" name="destacada" checked>
-                            {% else %}
-                                <input type="checkbox" name="destacada">
-                            {% endif %}
-                            <pre>Imagen existente:</pre>
-                            <img src="{{ obra.imagen.url }}" width="100">
-                            <pre>Seleccionar nueva imagen:</pre>
-                            <pre><input type="file" id="imagen" name="imagen" accept="image/*"></pre>
-		<pre>			<input type="submit" name="opcion" value="Modificar">
-	</form>
-	<a href="{% url 'crud'%}">Volver</a></td>
-{% endif %}
+
+            </select>
+
+            <div class="separacion"></div>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+   <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Mensaje de Modificacion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-message"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'validacionObra2.js' %}"></script>
+
+</body>
+</html>
+{% endblock content%}

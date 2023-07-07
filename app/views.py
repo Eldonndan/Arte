@@ -78,11 +78,9 @@ def crear(request):
         obj.save()
         
         users = User.objects.all()
-        context = {"mensaje": "Artista Ingresado Exitosamente!!!!!",
-            'users': users
-        }
-        return redirect('http://127.0.0.1:8000/login')
+        return redirect('login')
 
+    
     
 @login_required
 def menu(request):
@@ -184,7 +182,8 @@ def inserta_obra(request):
                                 destacada=destacada)
         obj.save() 
         context={"mensaje":'Obra Ingresada Exitosamente!'}
-        return render(request,'crud/agregarO.html',context)
+        return redirect('crud')
+
 
 def borra_obra(request,pk):
     context={}

@@ -2,47 +2,54 @@
 <html>
 {% extends 'menu.html' %}
 {% block content %}
-{%load static%}
+{% load static %}
 <head>
     <title>API del Museo Metropolitano de Arte</title>
     <style>
-        .artista {
+        .artista-table {
+            width: 100%;
+            border-collapse: collapse;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 10px;
             background-color: white;
-            overflow: hidden;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
         }
 
-        .artista .info {
-            flex: 1;
-            text-align: left;
-            padding-right: 20px;
+        .artista-table th,
+        .artista-table td {
+            padding: 10px;
+            text-align: center; /* Centra el contenido de las celdas de texto */
+            border: 1px solid #ccc;
         }
 
-        .artista .imagen {
-            flex-shrink: 0;
-            text-align: right;
+        .artista-table td.img-cell {
+            text-align: center;
         }
 
-        .artista img {
-            width: 300px; /* Ajusta el ancho de la imagen según tus necesidades */
-            height: auto; /* Ajusta la altura de la imagen según tus necesidades */
-            display: block; /* Elimina el espacio adicional debajo de la imagen */
+        .artista-table img {
+            max-width: 250px;
+            height: auto;
+            display: block;
             border-radius: 10px;
-            margin-bottom: 10px;
+            margin: 0 auto;
         }
 
+        .artista-table .info {
+            text-align: left; /* Centra el texto alineado a la izquierda */
+        }
     </style>
     <script src="{% static 'api2.js' %}"></script>
 </head>
-    <body>
-        <div class="separacion"></div>
-        <div id="artistas-container"></div>
-    </body>
+<body>
+    <div class="separacion"></div>
+    <table class="artista-table">
+        <thead>
+            <tr>
+                <th>Artistas</th>
+            </tr>
+        </thead>
+        <tbody id="artistas-container">
+            <!-- Aquí se generarán las filas de la tabla dinámicamente -->
+        </tbody>
+    </table>
+</body>
 {% endblock %}
 </html>

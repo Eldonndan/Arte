@@ -375,9 +375,6 @@ button.rechazar:hover {
 }
 
 
-
-
-
 .popup {
   position: fixed;
   top: 50%;
@@ -517,59 +514,105 @@ button.rechazar:hover {
 }
 
 
+/* Estilos generales */
 .table-container {
-margin: 20px auto;
-width: 80%;
-border-radius: 10px;
-overflow: hidden;
-box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
 }
 
 .table-title {
-text-align: center;
-padding: 20px;
-background-color: #009879;
-color: #ffffff;
-margin: 0;
+  text-align: center;
+  padding: 20px;
+  background-color: #009879;
+  color: #ffffff;
+  margin: 0;
+}
+
+.table-wrapper {
+  overflow-x: auto;
 }
 
 .minimalist-table {
-width: 100%;
-text-align: left;
-border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
 }
 
-.minimalist-table td, .minimalist-table th {
-padding: 12px 15px;
+.minimalist-table td,
+.minimalist-table th {
+  padding: 12px 15px;
+  border-bottom: 1px solid #dddddd;
+  color: #333333;
+}
+
+.minimalist-table thead th {
+  background-color: #009879;
+  color: #ffffff;
 }
 
 .minimalist-table tbody tr {
-border-bottom: 1px solid #dddddd;
+  background-color: #ffffff;
 }
 
-.minimalist-table tbody tr {
-background-color: #f3f3f3;
+.minimalist-table tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
 }
-
-
-
-
 
 .add-button {
-display: block;
-margin: 20px auto;
-background-color: #009879;
-color: #ffffff;
-border: none;
-border-radius: 5px;
-padding: 10px 20px;
-cursor: pointer;
+  display: block;
+  margin: 20px auto;
+  background-color: #009879;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 .add-button a {
-color: #ffffff;
-text-decoration: none;
+  color: #ffffff;
+  text-decoration: none;
 }
+
+/* Estilos responsivos */
+@media screen and (max-width: 768px) {
+  .table-container {
+    width: 95%;
+    margin: 10px;
+  }
+
+  .minimalist-table td,
+  .minimalist-table th {
+    padding: 8px 10px;
+  }
+
+  .minimalist-table td:before {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .minimalist-table td:before {
+    content: attr(data-label);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .table-container {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .minimalist-table td,
+  .minimalist-table th {
+    padding: 6px 8px;
+  }
+}
+
 
 .form-container {
   margin: 20px auto;
@@ -577,6 +620,7 @@ text-decoration: none;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
 }
 
 .form-title {
@@ -587,124 +631,78 @@ text-decoration: none;
   margin: 0;
 }
 
-.form-message {
-  background-color: #f3f3f3;
-  color: #333;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-}
-
 .minimalist-table {
   width: 100%;
   text-align: left;
   border-collapse: collapse;
 }
 
-.minimalist-table td, .minimalist-table th {
+.minimalist-table td,
+.minimalist-table th {
   padding: 12px 15px;
   border-bottom: 1px solid #dddddd;
+  color: #333333;
 }
 
-.minimalist-table th {
+.minimalist-table thead th {
   background-color: #009879;
   color: #ffffff;
 }
 
-.minimalist-table tr:last-child td {
-  border-bottom: none;
+.minimalist-table tbody tr {
+  background-color: #ffffff;
 }
 
-.form-submit {
-  text-align: right;
-}
-
-.form-submit input[type="submit"] {
-  background-color: #009879;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.form-link {
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  color: #009879;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.form-container {
-  margin: 20px auto;
-  width: 80%;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.form-title {
-  text-align: center;
-  padding: 20px;
-  background-color: #009879;
-  color: #ffffff;
-  margin: 0;
-}
-
-.form-message {
+.minimalist-table tbody tr:nth-child(even) {
   background-color: #f3f3f3;
-  color: #333;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-}
-
-.form-separator {
-  height: 1px;
-  background-color: #dddddd;
-  margin: 20px 0;
-}
-
-.minimalist-table {
-  width: 100%;
-  text-align: left;
-  border-collapse: collapse;
-}
-
-.minimalist-table td, .minimalist-table th {
-  padding: 12px 15px;
-  border-bottom: 1px solid #dddddd;
-}
-
-.minimalist-table th {
-  background-color: #009879;
-  color: #ffffff;
-}
-
-.minimalist-table tr:last-child td {
-  border-bottom: none;
 }
 
 .form-submit {
-  text-align: right;
-}
-
-.form-submit input[type="submit"] {
-  background-color: #009879;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
+  text-align: center;
+  padding-top: 20px;
 }
 
 .form-link {
   display: block;
-  margin: 20px auto;
   text-align: center;
+  margin-top: 20px;
   color: #009879;
   text-decoration: none;
-  font-weight: bold;
+}
+
+/* Estilos responsivos */
+@media screen and (max-width: 768px) {
+  .form-container {
+    width: 95%;
+    margin: 10px;
+  }
+
+  .minimalist-table td,
+  .minimalist-table th {
+    padding: 8px 10px;
+  }
+
+  .form-title {
+    font-size: 24px;
+  }
+
+  .form-submit {
+    padding-top: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .form-container {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .minimalist-table td,
+  .minimalist-table th {
+    padding: 6px 8px;
+  }
+
+  .form-title {
+    font-size: 20px;
+  }
 }
