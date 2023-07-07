@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User 
-from app.models import Administrador,Artista,Tecnica,Obra, ObraFav
+from app.models import Artista,Tecnica,Obra
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib import messages
 from .forms import TecnicaForm
-from django.db.models import Q
 
 # Create your views here.
 
@@ -147,14 +146,18 @@ def modifica_tecnica(request,pk):
 
 @login_required
 def crud(request):
-    obras=Obra.objects.all()
+    usuario = request.user
+    obras = Obra.objects.filter(artista=request.user.username)
+    
     if "usuario" not in request.session:
-        request.session["usuario"]=request.user.username
-        usuario=request.session["usuario"]
+        request.session["usuario"] = request.user.username
+        usuario = request.session["usuario"]
     else:
-        usuario=request.session["usuario"]    
-    context={"obras":obras,"usuario":usuario}
-    return render(request,'crud/crud.html',context)
+        usuario = request.session["usuario"]    
+    
+    context = {"usuario": usuario, "obras": obras}
+    return render(request, 'crud/crud.html', context)
+
 
 def inserta_obra(request):
     if request.method != "POST":
@@ -246,30 +249,3 @@ def modifica_obra(request, pk):
         tecnicas = Tecnica.objects.all()
         return render(request, 'crud/modifica_obra.html', {"obra": obra, "tecnicas": tecnicas})
 
-def verfavorito(request):
-    favoritos = ObraFav.objects.filter(user=request.user.username) 
-    obra = Obra.objects.all()
-    busqueda = request.GET.get("Buscar")
-    if busqueda:
-        obra = Obra.objects.filter(
-            Q(titulo__icontains=busqueda) |
-            Q(artista__icontains=busqueda)
-        ).distinct()
-    context = {
-        "favoritos": favoritos, 
-        "obra" : obra
-    }
-    return render(request, 'carrito/carrito.html', context)
-
-def agregar_favorito(request, obra_id):
-    user = User.objects.get()
-    obras = Obra.objects.get(id_obra=obra_id)
-    if ObraFav.objects.filter(user=user, obra=obras).exists():
-        context={}
-        return render(request, 'carrito/carrito.html', context)
-    
-    favor = ObraFav(user=user, obra=obras)
-    favor.save()
-    
-    context = {}
-    return render(request, 'carrito/carrito.html', context)

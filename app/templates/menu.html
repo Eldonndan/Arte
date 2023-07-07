@@ -42,9 +42,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'formulario' %}">Ayuda</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'carrito' %}">Carrito</a>
-                </li>
                 <form class="form-inline my-2 my-lg-0">
                     {% if user.is_authenticated %}
                         {% if user.is_superuser %}

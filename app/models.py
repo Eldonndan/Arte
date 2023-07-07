@@ -30,8 +30,3 @@ class Obra(models.Model):
     imagen = models.ImageField(upload_to='obras/')
     id_tecnica = models.ForeignKey('Tecnica',on_delete=models.CASCADE, db_column='idTecnica')
     artista = models.ForeignKey(Artista, on_delete=models.CASCADE)
-
-class ObraFav(models.Model):
-    id_fav = models.AutoField(primary_key=True)
-    id_obra = models.ForeignKey('Obra',on_delete=models.CASCADE, db_column='id_obra')
-    user = models.CharField (max_length=50)
