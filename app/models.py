@@ -21,7 +21,7 @@ class Tecnica(models.Model):
     tecnica = models.CharField(max_length=100, blank=False, null= False)
 
 class Obra(models.Model):
-    id_obra = models.AutoField(primary_key=True)
+    id_obra = models.AutoField(primary_key=True, db_column='id_obra')
     titulo = models.CharField(max_length=50)
     dimensiones = models.IntegerField()
     destacada = models.IntegerField()
@@ -30,3 +30,8 @@ class Obra(models.Model):
     imagen = models.ImageField(upload_to='obras/')
     id_tecnica = models.ForeignKey('Tecnica',on_delete=models.CASCADE, db_column='idTecnica')
     artista = models.ForeignKey(Artista, on_delete=models.CASCADE)
+
+class ObraFav(models.Model):
+    id_fav = models.AutoField(primary_key=True)
+    id_obra = models.ForeignKey('Obra',on_delete=models.CASCADE, db_column='id_obra')
+    user = models.CharField (max_length=50)

@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User 
-from app.models import Administrador,Artista,Tecnica,Obra
+from app.models import Administrador,Artista,Tecnica,Obra, ObraFav
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib import messages
 from .forms import TecnicaForm
+from django.db.models import Q
 
 # Create your views here.
 
@@ -46,6 +47,8 @@ def obra4(request):
 def artistas(request):
     context={}
     return render(request, 'artistas.html', context)
+
+
 
 
 def crear(request):
@@ -242,3 +245,31 @@ def modifica_obra(request, pk):
         obra = Obra.objects.get(id_obra=pk)
         tecnicas = Tecnica.objects.all()
         return render(request, 'crud/modifica_obra.html', {"obra": obra, "tecnicas": tecnicas})
+
+def verfavorito(request):
+    favoritos = ObraFav.objects.filter(user=request.user.username) 
+    obra = Obra.objects.all()
+    busqueda = request.GET.get("Buscar")
+    if busqueda:
+        obra = Obra.objects.filter(
+            Q(titulo__icontains=busqueda) |
+            Q(artista__icontains=busqueda)
+        ).distinct()
+    context = {
+        "favoritos": favoritos, 
+        "obra" : obra
+    }
+    return render(request, 'carrito/carrito.html', context)
+
+def agregar_favorito(request, obra_id):
+    user = User.objects.get()
+    obras = Obra.objects.get(id_obra=obra_id)
+    if ObraFav.objects.filter(user=user, obra=obras).exists():
+        context={}
+        return render(request, 'carrito/carrito.html', context)
+    
+    favor = ObraFav(user=user, obra=obras)
+    favor.save()
+    
+    context = {}
+    return render(request, 'carrito/carrito.html', context)

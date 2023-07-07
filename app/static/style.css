@@ -702,7 +702,42 @@ button.rechazar:hover {
     padding: 6px 8px;
   }
 
-  .form-title {
-    font-size: 20px;
-  }
+.minimalist-table tr:last-child td {
+  border-bottom: none;
+}
+
+.form-submit {
+  text-align: right;
+}
+
+.form-submit input[type="submit"] {
+  background-color: #009879;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.form-link {
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  color: #009879;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.containerr{
+  overflow:hidden; 
+  margin-top: 250px ;
+  background:#555555 ;
+  color: #627482  !important;
+  margin-bottom: 0 ;
+  padding-bottom:0  ;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  width: 70%;
 }
